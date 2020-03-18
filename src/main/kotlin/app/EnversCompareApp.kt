@@ -24,14 +24,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @ComponentScan("app.*")
 @EntityScan
 open class EnversCompareApp {
-    @Bean(name=["entityManagerFactory"])
-    open fun  getEntityManagerFactoryBean():LocalContainerEntityManagerFactoryBean {
-        val localContainerEntityManagerFactoryBean = LocalContainerEntityManagerFactoryBean()
-        localContainerEntityManagerFactoryBean.setPackagesToScan("app.feature")
-        localContainerEntityManagerFactoryBean.setPersistenceUnitName("PU")
-        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(HibernateJpaVendorAdapter())
-        return localContainerEntityManagerFactoryBean
-    }
+//    @Bean(name=["entityManagerFactory"])
+//    open fun  getEntityManagerFactoryBean():LocalContainerEntityManagerFactoryBean {
+//        val localContainerEntityManagerFactoryBean = LocalContainerEntityManagerFactoryBean()
+//        localContainerEntityManagerFactoryBean.setPackagesToScan("app.feature")
+//        localContainerEntityManagerFactoryBean.setPersistenceUnitName("PU")
+//        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(HibernateJpaVendorAdapter())
+//        return localContainerEntityManagerFactoryBean
+//    }
 
 }
 
