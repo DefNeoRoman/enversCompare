@@ -1,4 +1,4 @@
-package app
+package app.feature
 
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
@@ -8,26 +8,30 @@ import org.springframework.web.bind.annotation.*
 class BookController {
 
     @Autowired
-    private lateinit var repository: BookRepository
+    private lateinit var service: BookService
     private val gson: Gson = Gson()
 
     @GetMapping("/getAll")
-    fun hello(@RequestBody book: Book): String {
-        return gson.toJson(repository.findAll())
+    fun getAll(): String {
+        return gson.toJson(service.findAll())
+    }
+    @GetMapping("/hello")
+    fun hello(): String {
+        return "OK"
     }
 
     @PostMapping("/save")
     fun saveBook(@RequestBody book: Book): String {
-        repository.save(book)
+        service.save(book)
         return "OK"
     }
 
     @PutMapping("/update")
     fun updateBook(@RequestBody book: Book): String {
-        val bookById = repository.findById(book.id).get()
+        val bookById = service.findById(book.id)
         bookById.name = book.name
         bookById.pages = book.pages
-        repository.save(bookById)
+        service.save(bookById)
         return "OK"
     }
 }
