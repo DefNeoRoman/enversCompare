@@ -13,11 +13,11 @@ class BookService{
     @PostConstruct
     fun init(){
         print("set test data")
-        repository.save(Book(pages=900,name="qwe"))
-        repository.save(Book(pages=902,name="qwet"))
-        repository.save(Book(pages=903,name="qwee"))
-        repository.save(Book(pages=905,name="qwwe"))
-        repository.save(Book(pages=907,name="wqwe"))
+        repository.save(Book(pages=900,name="book1"))
+        repository.save(Book(pages=902,name="book2"))
+        repository.save(Book(pages=903,name="book3"))
+        repository.save(Book(pages=905,name="book4"))
+        repository.save(Book(pages=907,name="book5"))
     }
 
     fun findAll(): Any? {
@@ -30,5 +30,11 @@ class BookService{
 
     fun findById(id: Int?): Book {
        return repository.findById(id).get()
+    }
+    fun update(book:Book){
+        val bookById = repository.findById(book.id).get()
+        bookById.name = book.name
+        bookById.pages = book.pages
+        repository.save(bookById)
     }
 }

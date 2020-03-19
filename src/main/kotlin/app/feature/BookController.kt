@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
+private const val JSON = "application/json"
 @RestController
 class BookController {
 
@@ -20,7 +21,7 @@ class BookController {
         return "OK"
     }
 
-    @PostMapping("/save")
+    @PostMapping("/save", consumes = [JSON])
     fun saveBook(@RequestBody book: Book): String {
         service.save(book)
         return "OK"
@@ -28,10 +29,7 @@ class BookController {
 
     @PutMapping("/update")
     fun updateBook(@RequestBody book: Book): String {
-        val bookById = service.findById(book.id)
-        bookById.name = book.name
-        bookById.pages = book.pages
-        service.save(bookById)
+        service.update(book)
         return "OK"
     }
 }
