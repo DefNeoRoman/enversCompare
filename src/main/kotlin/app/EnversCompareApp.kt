@@ -19,10 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = [BookRepository::class], repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean::class)
 @ComponentScan("app.*")
 @EntityScan
-open class EnversCompareApp {
-
-
-}
+open class EnversCompareApp
 
 fun main(args: Array<String>) {
     SpringApplication.run(EnversCompareApp::class.java, *args)

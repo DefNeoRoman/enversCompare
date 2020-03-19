@@ -3,18 +3,15 @@ import app.feature.Book
 import com.google.gson.Gson
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.web.client.RestTemplate
 
 
-@RunWith(SpringJUnit4ClassRunner::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = [EnversCompareApp::class])
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = [EnversCompareApp::class])
 class RestTest {
     private val gson: Gson = Gson()
     private val restTemplate: RestTemplate = RestTemplate()
@@ -34,9 +31,8 @@ class RestTest {
         val book2: Book = Book(pages = 302, name = "Lord of the rings")
         val request: HttpEntity<String> = HttpEntity<String>(gson.toJson(book), headers)
         val request2: HttpEntity<String> = HttpEntity<String>(gson.toJson(book2), headers)
-        restTemplate.postForObject("http://localhost:8080/save", request, String::class.java)
-        restTemplate.postForObject("http://localhost:8080/save", request2, String::class.java)
-
+        restTemplate.postForObject("http://localhost:$port/save", request, String::class.java)
+        restTemplate.postForObject("http://localhost:$port/save", request2, String::class.java)
     }
 
     @Test
@@ -45,8 +41,8 @@ class RestTest {
         val book2: Book = Book(id = 2, pages = 302, name = "updated Lord of the rings")
         val request: HttpEntity<String> = HttpEntity<String>(gson.toJson(book), headers)
         val request2: HttpEntity<String> = HttpEntity<String>(gson.toJson(book2), headers)
-        restTemplate.put("http://localhost:8080/update", request, String::class.java)
-        restTemplate.put("http://localhost:8080/update", request2, String::class.java)
+        restTemplate.put("http://localhost:$port/update", request, String::class.java)
+        restTemplate.put("http://localhost:$port/update", request2, String::class.java)
     }
 }
 
