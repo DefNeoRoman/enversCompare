@@ -31,8 +31,8 @@ class RestTest {
         val book2: Book = Book(pages = 302, name = "Lord of the rings")
         val request: HttpEntity<String> = HttpEntity<String>(gson.toJson(book), headers)
         val request2: HttpEntity<String> = HttpEntity<String>(gson.toJson(book2), headers)
-        restTemplate.postForObject("http://localhost:$port/save", request, String::class.java)
-        restTemplate.postForObject("http://localhost:$port/save", request2, String::class.java)
+        restTemplate.postForObject("http://localhost:$port/book/save", request, String::class.java)
+        restTemplate.postForObject("http://localhost:$port/book/save", request2, String::class.java)
     }
 
     @Test
@@ -41,8 +41,8 @@ class RestTest {
         val book2: Book = Book(id = 2, pages = 302, name = "updated Lord of the rings")
         val request: HttpEntity<String> = HttpEntity<String>(gson.toJson(book), headers)
         val request2: HttpEntity<String> = HttpEntity<String>(gson.toJson(book2), headers)
-        restTemplate.put("http://localhost:$port/update", request, String::class.java)
-        restTemplate.put("http://localhost:$port/update", request2, String::class.java)
+        restTemplate.put("http://localhost:$port/book/update", request, String::class.java)
+        restTemplate.put("http://localhost:$port/book/update", request2, String::class.java)
     }
 }
 

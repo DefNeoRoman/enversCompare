@@ -11,11 +11,11 @@ class PersonController {
     @Autowired
     private lateinit var service: PersonService
     @Autowired
-    private lateinit var gson: UtilService
+    private lateinit var util: UtilService
 
     @GetMapping("/getAll")
     fun getAll(): String {
-        return gson.toJson(service.findAll())
+        return util.toJson(service.findAll())
     }
     @GetMapping("/hello")
     fun hello(): String {
