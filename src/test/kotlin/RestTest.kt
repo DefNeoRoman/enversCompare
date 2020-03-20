@@ -11,7 +11,7 @@ import org.springframework.http.MediaType
 import org.springframework.web.client.RestTemplate
 
 
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = [EnversCompareApp::class])
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = [EnversCompareApp::class])
 class RestTest {
     private val gson: Gson = Gson()
     private val restTemplate: RestTemplate = RestTemplate()

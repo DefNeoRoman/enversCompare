@@ -1,7 +1,9 @@
 @file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 
-package app.feature
+package app.feature.service
 
+import app.feature.Book
+import app.feature.BookRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct
@@ -12,12 +14,8 @@ class BookService{
     private lateinit var repository: BookRepository
     @PostConstruct
     fun init(){
-        print("set test data")
-        repository.save(Book(pages=900,name="book1"))
-        repository.save(Book(pages=902,name="book2"))
-        repository.save(Book(pages=903,name="book3"))
-        repository.save(Book(pages=905,name="book4"))
-        repository.save(Book(pages=907,name="book5"))
+        repository.save(Book(pages = 900, name = "book1"))
+        repository.save(Book(pages = 902, name = "book2"))
     }
 
     fun findAll(): Any? {
@@ -28,10 +26,7 @@ class BookService{
        repository.save(book)
     }
 
-    fun findById(id: Int?): Book {
-       return repository.findById(id).get()
-    }
-    fun update(book:Book){
+    fun update(book: Book){
         val bookById = repository.findById(book.id).get()
         bookById.name = book.name
         bookById.pages = book.pages

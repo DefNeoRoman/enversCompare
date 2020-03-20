@@ -21,6 +21,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EntityScan
 open class EnversCompareApp
 
+
+
 fun main(args: Array<String>) {
     SpringApplication.run(EnversCompareApp::class.java, *args)
 }
