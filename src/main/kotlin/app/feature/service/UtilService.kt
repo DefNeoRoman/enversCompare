@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 class UtilService {
     private val gson: Gson = Gson()
 
-    public fun toJson (obj: Any?):String{
+    fun toJson (obj: Any?):String{
         return gson.toJson(obj)
     }
 }
